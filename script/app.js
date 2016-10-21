@@ -222,15 +222,17 @@
 
     }
     
-    $('.activeCard #card-feedback').click(function() {
-      $('.activeCard #card-feedback').slideToggle();
-    });
+    // $('.activeCard #card-feedback').click(function() {
+    //   $('.activeCard #card-feedback').slideToggle();
+    // });
     
     
     $(".activeCard #nextIon").click(function() {
       app.loadNextQuestion();
     });
     
+
+     
       
     if (app.isLoading) {
       app.spinner.setAttribute('hidden', true);
@@ -341,5 +343,23 @@ $(function() {
         //Default is 75px, set to 0 for demo so any distance triggers swipe
          threshold:0
       });
+      $(".activeCard").swipe( {
+        //Generic swipe handler for all directions
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+          $(this).text("You swiped " + direction );  
+          $(this).animate({
+              'left': '-150%'
+          }, 100, "swing" );
+          //$(this).hide();
+          
+          
+        },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+         threshold:0
+      });      
+      
+      
+      
+      
     });
   

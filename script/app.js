@@ -170,17 +170,19 @@
     }
 
 
-    card.querySelector('.ion').innerHTML += 
-           app.getFormattedIon (''+ data.Symbol + data.Strength + chargeSymbols[data.Charge]) ;
+    // card.querySelector('.ion').innerHTML += 
+    //       app.getFormattedIon (''+ data.Symbol + data.Strength + chargeSymbols[data.Charge]) ;
     
- 
+    card.querySelector('.ion').innerHTML +=
+            data.Question;
+            //app.getFormattedIon(data.Question);
  
     //  get answer options and randomly display them   
     var answerOptions = [
-      data.Name,
-      data["Wrong Name 1"],
-      data["Wrong Name 2"],
-      data["Wrong Name 3"]
+      data["Correct Answer"],
+      data["Wrong Answer 1"],
+      data["Wrong Answer 2"],
+      data["Wrong Answer 3"]
     ];
     
     
@@ -209,8 +211,9 @@
       }
       
       var answerText = answerOptions.splice(rand,1);
+      console.log(answerText);
       var answerEl = card.querySelector('#a' + i);
-      answerEl.textContent =
+      answerEl.innerHTML =
         answerText;
 
       answerEl.addEventListener('click', function() {
